@@ -1,0 +1,62 @@
+{% extends "admin/adminbase.html" %}
+{% block content %}
+{%load crispy_forms_tags %}
+   <div class="col-lg-10 grid-margin stretch-card">
+              <div class="card">
+                <div class="card-body">
+                      <div class="table-responsive">
+                    <table class="table table-hover">
+  <thead>
+    <tr>
+      <th scope="col">SL NO</th>
+      <th scope="col">CUSTOMER NAME</th>
+      <th scope="col">WORKER NAME</th>
+      <th scope="col">WORK</th>
+      <th scope="col">START TIME</th>
+      <th scope="col">END TIME</th>
+      <th scope="col">DATE</th>
+      <th scope="col">STATUS</th>
+
+    </tr>
+  </thead>
+  <tbody>
+  {% for n in data %}
+    <tr>
+      <th scope="row">{{ forloop.counter }}</th>
+      <td>{{n.customer.name}}</td>
+      <td>{{n.schedule.worker}}</td>
+      <td>{{n.schedule.work}}</td>
+      <td>{{n.schedule.startingtime}}</td>
+      <td>{{n.schedule.endingtime}}</td>
+      <td>{{n.schedule.date }}</td>
+      <td>
+          {% if n.status == 0 %}
+          <a href="{% url 'status_approve' n.id %}" class="btn btn-primary">Approve</a>
+          <a href="{% url 'status_reject' n.id %}" class="btn btn-danger">Reject</a>
+          {% elif n.status == 1 %}
+          <button class="btn btn-success">Fixed</button>
+          {% else %}
+          <button class="btn btn-danger"></button>
+          {% endif %}
+        <td>
+<!--      <td>@mdo</td>-->
+<!--    </tr>-->
+<!--    <tr>-->
+<!--      <th scope="row">2</th>-->
+<!--      <td>Jacob</td>-->
+<!--      <td>Thornton</td>-->
+<!--      <td>@fat</td>-->
+<!--    </tr>-->
+<!--    <tr>-->
+<!--      <th scope="row">3</th>-->
+<!--      <td colspan="2">Larry the Bird</td>-->
+<!--      <td>@twitter</td>-->
+    </tr>
+  {% endfor %}
+  </tbody>
+</table>
+                          </div>
+</div>
+              </div>
+   </div>
+{% endblock %}

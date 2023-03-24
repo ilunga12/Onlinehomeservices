@@ -1,0 +1,22 @@
+{% extends "customer/customerbase.html" %}
+{% block content %}
+{% load crispy_forms_tags %}
+<form method="post" enctype="multipart/form-data">
+  {% csrf_token %}
+  <div class="mb-3">
+    <label for="card" class="form-label">CARD NUMBER</label>
+    <input type="number" class="form-label" id="card" maxlength="13" minlength="13" name="card" required>
+
+  </div>
+  <div class="mb-3">
+    <label for="cvv" class="form-label">CARD CVV</label>
+    <input type="password" class="form-label" id="cvv" maxlength="3" minlength="3" name="cvv" required>
+  </div>
+  <div class="mb-3 form-check">
+
+    <label class="form-label" for="example-month-input">EXP DATE</label>
+    <input type="month" class="form-label" id="example-month-input" name="exp" required>
+  </div>
+  <button type="submit" class="btn btn-primary">Submit</button>
+</form>
+{% endblock %}

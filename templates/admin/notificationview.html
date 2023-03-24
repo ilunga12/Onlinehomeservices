@@ -1,0 +1,46 @@
+{% extends "admin/adminbase.html" %}
+{% block content %}
+{%load crispy_forms_tags %}
+<div class="card text-bg-secondary mb-3" style="max-width: 50rem;">
+  <div class="card-header">WORKVIEW</div>
+  <div class="card-body">
+                      <div class="table-responsive">
+                    <table class="table table-hover">
+  <thead>
+    <tr>
+      <th scope="col">SL NO</th>
+      <th scope="col">NOTIFICATION</th>
+      <th scope="col">DATE</th>
+      <th scope="col">DELETE</th>
+    </tr>
+  </thead>
+  <tbody>
+  {% for i in data %}
+    <tr>
+      <th scope="row">{{ forloop.counter }}</th>
+      <td>{{i.Notification}}</td>
+      <td>{{i.Date}}</td>
+      <td><form action="{% url 'deletenot' i.id %}" method="post">
+           {% csrf_token %}
+           <button type="submit" class="btn btn-danger">DELETE</button>
+       </form></td>
+<!--      <td>@mdo</td>-->
+<!--    </tr>-->
+<!--    <tr>-->
+<!--      <th scope="row">2</th>-->
+<!--      <td>Jacob</td>-->
+<!--      <td>Thornton</td>-->
+<!--      <td>@fat</td>-->
+<!--    </tr>-->
+<!--    <tr>-->
+<!--      <th scope="row">3</th>-->
+<!--      <td colspan="2">Larry the Bird</td>-->
+<!--      <td>@twitter</td>-->
+    </tr>
+  {% endfor %}
+  </tbody>
+</table>
+                            </div>
+</div>
+              </div>
+{% endblock %}

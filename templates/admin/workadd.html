@@ -1,0 +1,21 @@
+{% extends "admin/adminbase.html" %}
+{% block content %}
+{%load crispy_forms_tags %}
+<div class="col-lg-20 grid-margin stretch-card">
+              <div class="card">
+                <div class="card-body">
+<h1></h1>
+<h2></h2>
+<a></a>
+
+ <form method="post" enctype="multipart/form-data">
+                        {% csrf_token %}
+                        {{form|crispy}}
+                        <input type="submit"/>
+
+                      </form>
+                       </div>
+</div>
+</div>
+
+{% endblock %}

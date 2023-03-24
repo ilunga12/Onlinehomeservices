@@ -1,0 +1,53 @@
+{% extends "customer/customerbase.html" %}
+{% block content %}
+{%load crispy_forms_tags %}
+<div class="col-lg-20 grid-margin stretch-card">
+              <div class="card">
+                <div class="card-body">
+                      <div class="table-responsive">
+                    <table class="table table-hover">
+  <thead>
+    <tr>
+      <th scope="col">SL NO</th>
+      <th scope="col">CUSTOMER</th>
+      <th scope="col">FEEDBACK</th>
+      <th scope="col">REPLY</th>
+<!--      <th scope="col">DATE/th>-->
+<!--      <th scope="col">UPDATE</th>-->
+<!--      <th scope="col">DELETE</th>-->
+    </tr>
+  </thead>
+  <tbody>
+  {% for n in data2 %}
+    <tr>
+      <th scope="row">{{ forloop.counter }}</th>
+      <td>{{n.customer}}</td>
+      <td>{{n.message}}</td>
+      <td>{{n.reply}}</td>
+<!--      <td>{{n.date}}</td>-->
+<!--      <td><a href="{% url 'ScheduleUpdate' n.id %}" class="btn btn-warning">UPDATE</a></td>-->
+<!--      <td><form action="{% url 'deleteSchedule' n.id %}" method="post">-->
+<!--           {% csrf_token %}-->
+<!--           <button type="submit" class="btn btn-danger">DELETE</button>-->
+<!--       </form></td>-->
+<!--      <td>@mdo</td>-->
+<!--    </tr>-->
+<!--    <tr>-->
+<!--      <th scope="row">2</th>-->
+<!--      <td>Jacob</td>-->
+<!--      <td>Thornton</td>-->
+<!--      <td>@fat</td>-->
+<!--    </tr>-->
+<!--    <tr>-->
+<!--      <th scope="row">3</th>-->
+<!--      <td colspan="2">Larry the Bird</td>-->
+<!--      <td>@twitter</td>-->
+    </tr>
+  {% endfor %}
+  </tbody>
+</table>
+{% endblock %}
+   </div>
+</div>
+              </div>
+</div>

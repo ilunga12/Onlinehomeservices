@@ -1,0 +1,56 @@
+{% extends "customer/customerbase.html" %}
+{% block content %}
+{%load crispy_forms_tags %}
+
+<table class="table">
+  <thead>
+    <tr>
+      <th scope="col">SL NO</th>
+      <th scope="col">NAME</th>
+      <th scope="col">BILL DATE</th>
+      <th scope="col">AMOUNT</th>
+      <th scope="col">PAID ON</th>
+      <th scope="col">STATUS</th>
+<!--      <th scope="col">DELETE</th>-->
+    </tr>
+  </thead>
+  <tbody>
+  {% for n in data %}
+    <tr>
+      <th scope="row">{{ forloop.counter }}</th>
+      <td>{{n.name}}</td>
+      <td>{{n.billDate}}</td>
+      <td>{{n.amount}}</td>
+      <td>{{n.paidOn}}</td>
+      <td>
+        {% if n.status == 0 %}
+          <a href="{% url 'direct_payment' n.id %}" class="btn btn-primary">CASHPAYMENT</a>
+          <a href="{% url 'cardpayment' n.id %}" class="btn btn-danger">CARDPAYMENT</a>
+          {% elif n.status == 1 %}
+            <button class="btn btn-success">PaymentSuccesfully</button>
+          {% else %}
+          <button class="btn btn-warning">PAY IN DIRECT</button>
+          {% endif %}
+      </td>
+<!--      <td><a href="{% url 'ScheduleUpdate' n.id %}" class="btn btn-warning">UPDATE</a></td>-->
+<!--      <td><form action="{% url 'deleteSchedule' n.id %}" method="post">-->
+<!--           {% csrf_token %}-->
+<!--           <button type="submit" class="btn btn-danger">DELETE</button>-->
+<!--       </form></td>-->
+
+<!--    </tr>-->
+<!--    <tr>-->
+<!--      <th scope="row">2</th>-->
+<!--      <td>Jacob</td>-->
+<!--      <td>Thornton</td>-->
+<!--      <td>@fat</td>-->
+<!--    </tr>-->
+<!--    <tr>-->
+<!--      <th scope="row">3</th>-->
+<!--      <td colspan="2">Larry the Bird</td>-->
+<!--      <td>@twitter</td>-->
+    </tr>
+  {% endfor %}
+  </tbody>
+</table>
+{% endblock %}

@@ -1,0 +1,48 @@
+{% extends "customer/customerbase.html" %}
+{% block content %}
+{%load crispy_forms_tags %}
+
+<table class="table">
+  <thead>
+    <tr>
+      <th scope="col">SL NO</th>
+      <th scope="col">WORKER</th>
+      <th scope="col">WORK</th>
+      <th scope="col">STARTTIME</th>
+      <th scope="col">ENDTIME</th>
+      <th scope="col">DATE</th>
+      <th scope="col">BOOK</th>
+
+    </tr>
+  </thead>
+  <tbody>
+  {% for n in data %}
+    <tr>
+      <th scope="row">{{ forloop.counter }}</th>
+      <td>{{n.worker}}</td>
+      <td>{{n.work}}</td>
+      <td>{{n.startingtime}}</td>
+      <td>{{n.endingtime}}</td>
+      <td>{{n.date}}</td>
+      <td><a href="{% url 'schedulebook' n.id %}" class="btn btn-warning">BOOK</a></td>
+<!--      <td><form action="{% url 'deleteSchedule' n.id %}" method="post">-->
+<!--           {% csrf_token %}-->
+<!--           <button type="submit" class="btn btn-danger">DELETE</button>-->
+<!--       </form></td>-->
+<!--      <td>@mdo</td>-->
+<!--    </tr>-->
+<!--    <tr>-->
+<!--      <th scope="row">2</th>-->
+<!--      <td>Jacob</td>-->
+<!--      <td>Thornton</td>-->
+<!--      <td>@fat</td>-->
+<!--    </tr>-->
+<!--    <tr>-->
+<!--      <th scope="row">3</th>-->
+<!--      <td colspan="2">Larry the Bird</td>-->
+<!--      <td>@twitter</td>-->
+    </tr>
+  {% endfor %}
+  </tbody>
+</table>
+{% endblock %}

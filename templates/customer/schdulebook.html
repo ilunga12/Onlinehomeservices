@@ -1,0 +1,37 @@
+{% extends "customer/customerbase.html" %}
+{% block content %}
+{%load crispy_forms_tags %}
+<!--<div class="col-lg-20 grid-margin stretch-card">-->
+<!--              <div class="card">-->
+<!--                <div class="card-body">-->
+<form method="post">
+  {% csrf_token %}
+  <div class="mb-3">
+    <label  class="form-label">WORKER</label>
+    <input  class="form-control"   readonly value="{{schedule.worker}}">
+<!--    <div id="emailHelp" class="form-text">We'll never share your email with anyone else.</div>-->
+  </div>
+  <div class="mb-3">
+    <label  class="form-label">WORK</label>
+    <input  class="form-control"  readonly value="{{schedule.work}}">
+  </div>
+  <div class="mb-3">
+    <label  class="form-label">StartTime</label>
+    <input  class="form-control"  readonly value="{{schedule.startingtime}}">
+  </div>
+  <div class="mb-3">
+    <label  class="form-label">EndTime</label>
+    <input class="form-control"  readonly value="{{schedule.endingtime}}">
+  </div>
+  <div class="mb-3">
+    <label  class="form-label">Date</label>
+    <input  class="form-control"  readonly value="{{schedule.date}}">
+  </div>
+
+  <button type="submit" class="btn btn-primary">Submit</button>
+</form>
+                </div>
+              </div>
+</div>
+
+{% endblock %}
